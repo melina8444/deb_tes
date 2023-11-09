@@ -1,0 +1,180 @@
+{% extends '../index_master.html' %} {% block content %}
+<div class="center_col m-2 text-center bg-success rounded text-white" role="main">
+  <h1>{% block title%} Temporada - Campings {% endblock%}</h1>
+</div>
+
+<div class="d-flex justify-content-start align-items-center m-2" style="height: 20vh">
+    <div class="col-md-6 d-flex">
+      <div class="border p-2 rounded bg-success d-flex align-items-center" style="opacity: 0.75">
+        <h5 class="text-white rounded me-1">Temporada<i class="bi bi-flower1 ms-2"></i></h5> 
+        <form method="GET" class="d-flex">
+          {% csrf_token %}
+          <div class="d-flex">
+            {{ filter_form.campsite_name.label_tag }}
+            {{ filter_form.campsite_name }}
+            
+          </div>
+          <div><button type="submit" class="btn btn-primary ms-1"><i class="bi bi-search"></i></button></div>
+      </form>
+      </div>
+    </div>
+    <div class="col-md-4 p-2 justify-content-center align-items-center">
+      {% if filter_form.campsite_name.errors %}
+          <p class="text-danger fw-bold">{{ filter_form.campsite_name.errors|join:" " }}</p>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-12">
+        <div class="border rounded p-4">
+          <a href="{% url 'season_create' %}" class="btn btn-sm btn-success text-white"
+            ><i class="bi bi-file-earmark-plus me-2"></i>NUEVA - Temporada</a
+          >
+          <div class="table-responsive rounded mt-4" style="overflow-x: auto;">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Fecha_Inicio</th>
+                <th>Fecha_Fin</th>
+                <th>Porcentaje de aumento</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for season in seasons %}
+              <tr>
+                <td>{{ season.name}}</td>
+                <td>{{ season.start_date }}</td>
+                <td>{{ season.end_date }}</td>
+                <td class="percentage-value">{{ season.percentage }}</td>
+
+                <td>
+                  <div class="d-flex">
+                  <a
+                    href="{% url 'season_update' season.pk %}"
+                    class="btn btn-info me-2" title="Editar"
+                    ><i class="bi bi-pencil-fill"></i></a
+                  >
+                  <a href="{% url 'season_delete' season.pk %}" class="btn btn-danger" title="Eliminar">
+                    <i class="bi bi-trash-fill"></i>
+                  </a>
+                </td>
+              </div>
+              </tr>
+              {% empty %}
+              <tr>
+                <td colspan="5">No se encontraron Temporadas.</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% comment %} <!-- Agrega este script al final de tu plantilla HTML -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Obtiene todos los elementos con la clase "percentage-value"
+    var percentageElements = document.querySelectorAll('.percentage-value');
+
+    // Itera a través de los elementos y aplica la conversión
+    percentageElements.forEach(function(element) {
+      var originalValue = parseFloat(element.textContent);
+      if (!isNaN(originalValue)) {
+        var formattedValue = originalValue === 100 ? '0%' : originalValue === 120 ? '20%' : element.textContent;
+        element.textContent = formattedValue;
+      }
+    });
+  });
+</script> {% endcomment %}
+<!-- Agrega este script al final de tu plantilla HTML -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Obtiene todos los elementos con la clase "percentage-value"
+    var percentageElements = document.querySelectorAll('.percentage-value');
+
+    // Itera a través de los elementos y aplica la conversión
+    percentageElements.forEach(function(element) {
+      var originalValue = parseFloat(element.textContent);
+      if (!isNaN(originalValue)) {
+        var formattedValue = element.textContent;
+        switch (originalValue) {
+          case 100:
+            formattedValue = '0%';
+            break;
+          case 110:
+            formattedValue = '10%';
+            break;
+          case 115:
+            formattedValue = '15%';
+            break;
+          case 120:
+            formattedValue = '20%';
+            break;
+          case 125:
+            formattedValue = '25%';
+            break;
+          case 130:
+            formattedValue = '30%';
+            break;
+          case 135:
+            formattedValue = '35%';
+            break;
+           case 140:
+            formattedValue = '40%';
+            break;
+          case 145:
+            formattedValue = '45%';
+            break;
+          case 150:
+            formattedValue = '50%';
+            break;
+          case 155:
+            formattedValue = '55%';
+            break;
+          case 160:
+            formattedValue = '60%';
+            break;
+          case 165:
+            formattedValue = '65%';
+            break;
+          case 170:
+            formattedValue = '70%';
+            break;
+          case 175:
+            formattedValue = '75%';
+            break;
+          case 180:
+            formattedValue = '80%';
+            break;
+          case 185:
+            formattedValue = '85%';
+            break;
+          case 190:
+            formattedValue = '90%';
+            break;
+          case 195:
+            formattedValue = '95%';
+            break;
+          
+        }
+        element.textContent = formattedValue;
+      }
+    });
+  });
+</script>
+
+
+
+
+
+  {% endblock %}
+</div>
+<!-- Agrega este script al final de tu plantilla HTML -->
+

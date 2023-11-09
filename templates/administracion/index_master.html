@@ -1,0 +1,408 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Admin</title>
+        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+        <link href="/static/administracion/css/styles.css" rel="stylesheet"/>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.3.3/chart.min.js" rel="stylesheet" />
+        <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    </head>
+<body class="sb-nav-fixed">
+  <nav class="sb-topnav navbar navbar-expand navbar-success bg-success">
+            <!-- Navbar Brand-->
+             <!-- Sidebar Toggle-->
+            <button class="btn btn-dark btn-sm order-1 order-lg-0 ms-2 me-2 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+            
+            <a class="navbar-brand ps-3" href="{% url 'inicio_admin' %}">Administración</a>
+        
+            <!-- Navbar Search-->
+    <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                {% comment %} <div class="input-group">
+                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+                </div> {% endcomment %}
+    </form>
+            <!-- Navbar-->
+            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4 text-dark">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-dark" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li><hr class="dropdown-divider"/></li>
+                        <li><a class="dropdown-item" href="{% url 'Inicio' %}">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+  </nav>
+<div id="layoutSidenav">
+  <div id="layoutSidenav_nav">
+    <nav class="sb-sidenav accordion bg-success bg-opacity-50 text-dark" id="sidenavAccordion">
+      <div class="sb-sidenav-menu">
+        <div class="nav">
+                      
+                          <!-- Elemento del menú: Inicio -->
+                    <a class="nav-link text-dark" href="{% url 'inicio_admin' %}">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Inicio
+                    </a>
+                      
+                          <!-- Acordeón: Clientes -->
+                    <a class="nav-link collapsed text-dark" href="#" data-bs-toggle="collapse" data-bs-target="#clientesCollapse" aria-expanded="false">
+                            <div class="sb-nav-link-icon d-flex"><i class="fas fa-users me-2"></i>
+                              <h6>Clientes</h6></div>
+                            
+                            <div class="sb-sidenav-collapse-arrow text-dark"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                <div class="collapse" id="clientesCollapse">
+                    <div class="nav text-dark">
+                              <!-- CRUD Clientes -->
+
+                              <a href="{% url 'profile_list' %}" class="nav-link text-dark sjustify-content-end">
+                                 <div class="sb-nav-link-icon ms-4 p-2 rounded bg-success"><i class="bi bi-eye-fill me-3"></i><i class="bi bi-file-earmark-plus me-3"></i><i class="bi bi-pencil-fill me-3"></i><i class="bi bi-trash-fill"></i></div>
+                              </a>
+                    </div>
+                </div>
+                      
+                          <!-- Acordeón: Parques Naturales -->
+                            <a class="nav-link collapsed text-dark" href="#" data-bs-toggle="collapse" data-bs-target="#parquesCollapse" aria-expanded="false">
+                                  <div class="sb-nav-link-icon d-flex"><i class="bi bi-flower2 me-2"></i><h6>Parques Naturales</h6></div>
+                                  <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                  <div class="collapse" id="parquesCollapse">
+                      <div class="nav">
+                              <!-- CRUD Parques Naturales -->
+                            <a href="{% url 'naturalpark_list' %}" class="nav-link text-dark sjustify-content-end">
+                                  <div class="sb-nav-link-icon ms-4 p-2 rounded bg-success"><i class="bi bi-eye-fill me-3"></i><i class="bi bi-file-earmark-plus me-3"></i><i class="bi bi-pencil-fill me-3"></i><i class="bi bi-trash-fill"></i></div>
+                            </a>   
+                      </div>
+                  </div>
+                  <div>
+                              <!-- Acordeón: Temporada -->
+                      <a class="nav-link collapsed text-dark" href="#" data-bs-toggle="collapse" data-bs-target="#campingsCollapse" aria-expanded="false">
+                        <div class="sb-nav-link-icon d-flex"><i class="bi bi-triangle me-2"></i><h6>Temporada</h6></div>
+                        <div class="sb-sidenav-collapse-arrow text-dark"><i class="fas fa-angle-down"></i></div>
+                      </a>
+                      <div class="collapse" id="campingsCollapse">
+                        <div class="nav text-dark">
+                          <!-- CRUD Temporada -->
+                          <a href="{% url 'season_list' %}" class="nav-link text-dark sjustify-content-end">
+                            <div class="sb-nav-link-icon ms-4 p-2 rounded bg-success"><i class="bi bi-eye-fill me-3"></i><i class="bi bi-file-earmark-plus me-3"></i><i class="bi bi-pencil-fill me-3"></i><i class="bi bi-trash-fill"></i></div>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+
+                           <!-- Acordeón: Categorias -->
+                      <a class="nav-link collapsed text-dark" href="#" data-bs-toggle="collapse" data-bs-target="#categoriesCollapse" aria-expanded="false">
+                        <div class="sb-nav-link-icon d-flex"><i class="bi bi-folder me-2"></i><h6>Categorías</h6></div>
+                        <div class="sb-sidenav-collapse-arrow text-dark"><i class="fas fa-angle-down"></i></div>
+                      </a>
+                      <div class="collapse" id="categoriesCollapse">
+                        <div class="nav text-dark">
+                          <!-- CRUD Categorias -->
+                          <a href="{% url 'category_list' %}" class="nav-link text-dark sjustify-content-end">
+                            <div class="sb-nav-link-icon ms-4 p-2 rounded bg-success"><i class="bi bi-eye-fill me-3"></i><i class="bi bi-file-earmark-plus me-3"></i><i class="bi bi-pencil-fill me-3"></i><i class="bi bi-trash-fill"></i></div>
+                          </a>
+                        </div>
+                      </div>
+                      
+                      <!-- Acordeón: Campings -->
+                      <a class="nav-link collapsed text-dark" href="#" data-bs-toggle="collapse" data-bs-target="#campingsCollapse" aria-expanded="false">
+                        <div class="sb-nav-link-icon d-flex"><i class="bi bi-triangle me-2"></i><h6>Campings</h6></div>
+                        <div class="sb-sidenav-collapse-arrow text-dark"><i class="fas fa-angle-down"></i></div>
+                      </a>
+                      <div class="collapse" id="campingsCollapse">
+                        <div class="nav text-dark">
+                          <!-- CRUD Campings -->
+                          <a href="{% url 'campsite_list' %}" class="nav-link text-dark sjustify-content-end">
+                            <div class="sb-nav-link-icon ms-4 p-2 rounded bg-success"><i class="bi bi-eye-fill me-3"></i><i class="bi bi-file-earmark-plus me-3"></i><i class="bi bi-pencil-fill me-3"></i><i class="bi bi-trash-fill"></i></div>
+                          </a>
+                        </div>
+                      </div>
+
+                        <!-- Acordeón: Disponibilidades -->
+                        <a class="nav-link collapsed text-dark" href="#" data-bs-toggle="collapse" data-bs-target="#availabilityCollapse" aria-expanded="false">
+                          <div class="sb-nav-link-icon d-flex"><i class="bi bi-calendar me-2"></i>
+                            <h6>Disponibilidades</h6></div>
+                          
+                          <div class="sb-sidenav-collapse-arrow text-dark"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="availabilityCollapse">
+                          <div class="nav text-dark">
+                            <!-- CRUD Disponibilidades -->
+                            <a href="{% url 'availability_list' %}" class="nav-link text-dark sjustify-content-end">
+                              <div class="sb-nav-link-icon ms-4 p-2 rounded bg-success"><i class="bi bi-eye-fill me-3"></i><i class="bi bi-file-earmark-plus me-3"></i><i class="bi bi-pencil-fill me-3"></i><i class="bi bi-trash-fill"></i></div>
+                            </a>
+                          </div>
+                        </div>
+
+                       <!-- Acordeón: Reservas -->
+                       <a class="nav-link collapsed text-dark" href="#" data-bs-toggle="collapse" data-bs-target="#reservasCollapse" aria-expanded="false">
+                        <div class="sb-nav-link-icon d-flex"><i class="bi bi-calendar-check me-2"></i>
+                          <h6>Reservas</h6> </div>
+                          
+                        <div class="sb-sidenav-collapse-arrow text-dark"><i class="fas fa-angle-down"></i></div>
+                      </a>
+                      
+                      <div class="collapse" id="reservasCollapse">
+                        <div class="nav text-dark">
+                          <!-- CRUD Reservas -->
+                          <a href="{% url 'reservation_list' %}" class="nav-link text-dark sjustify-content-end">
+                            <div class="sb-nav-link-icon ms-4 p-2 rounded bg-success"><i class="bi bi-eye-fill me-3"></i><i class="bi bi-file-earmark-plus me-3"></i><i class="bi bi-pencil-fill me-3"></i><i class="bi bi-trash-fill"></i></div>
+                          </a>
+                        </div>
+                      </div>
+                       
+<!-- Acordeón: Gráficos -->
+<a class="nav-link collapsed text-dark" href="#" data-bs-toggle="collapse" data-bs-target="#graficosCollapse" aria-expanded="false">
+  <div class="sb-nav-link-icon d-flex"><i class="bi bi-bar-chart me-2"></i><h6>Gráficos</h6></div>
+  <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+</a>
+<div class="collapse" id="graficosCollapse">
+  <div class="nav">
+    <!-- Agrega aquí tus enlaces a los gráficos -->
+    <a href="{% url 'grafico' %}" class="nav-link text-dark sjustify-content-end">
+      <div class="sb-nav-link-icon ms-4 p-2 rounded bg-success"><i class="bi bi-eye-fill me-3"></i></div>
+      Reservas por mes
+    </a>
+    <!-- Agrega aquí más enlaces a otros gráficos si los tienes -->
+   {% comment %}   <a href="{% url 'grafico3' %}" class="nav-link text-dark sjustify-content-end"  title="Reserva por año">
+      <div class="sb-nav-link-icon ms-4 p-2 rounded bg-success"><i class="bi bi-eye-fill me-3"></i></div>
+      Importe total de reservas por mes(confirmadas)
+    </a> {% endcomment %}
+
+   <a href="{% url 'grafico9' %}" class="nav-link text-dark sjustify-content-end"  title="Reserva por año">
+      <div class="sb-nav-link-icon ms-4 p-2 rounded bg-success"><i class="bi bi-eye-fill me-3"></i></div>
+      Importe total de reservas Año y Mes(confirmadas)
+    </a>
+ 
+
+    <a href="{% url 'grafico4' %}" class="nav-link text-dark sjustify-content-end"  title="Reservas activas e inactivas por año">
+      <div class="sb-nav-link-icon ms-4 p-2 rounded bg-success"><i class="bi bi-eye-fill me-3"></i></div>
+      Reserva por año
+    </a>
+    <a href="{% url 'grafico5' %}" class="nav-link text-dark sjustify-content-end"  title="camping por parques naturales">
+      <div class="sb-nav-link-icon ms-4 p-2 rounded bg-success"><i class="bi bi-eye-fill me-3"></i></div>
+      Camping por Parque Natural
+    </a>
+    
+  
+
+  </div>
+</div>
+
+
+
+
+
+
+
+                        <!-- Acordeón: Gráficos -->
+{% comment %} <a class="nav-link collapsed text-dark" href="#" data-bs-toggle="collapse" data-bs-target="#graficosCollapse" aria-expanded="false">
+  <div class="sb-nav-link-icon d-flex"><i class="bi bi-bar-chart me-2"></i><h6>Gráficos</h6></div>
+  <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+</a>
+<div class="collapse" id="graficosCollapse">
+  <div class="nav">
+    <!-- Agrega aquí tus enlaces a los gráficos -->
+    <a href="{% url 'grafico' %}" class="nav-link text-dark sjustify-content-end" title="Ocupacion Campings">
+      <div class="sb-nav-link-icon ms-4 p-2 rounded bg-success"><i class="bi bi-eye-fill me-3"></i></div>
+    </a>
+   
+    <a href="{% url 'grafico3' %}" class="nav-link text-dark sjustify-content-end"  title="Reserva por año">
+      <div class="sb-nav-link-icon ms-4 p-2 rounded bg-success"><i class="bi bi-eye-fill me-3"></i></div>
+    </a>
+    <a href="{% url 'grafico4' %}" class="nav-link text-dark sjustify-content-end"  title="Reservas activas e inactivas por año">
+      <div class="sb-nav-link-icon ms-4 p-2 rounded bg-success"><i class="bi bi-eye-fill me-3"></i></div>
+    </a>
+    <a href="{% url 'grafico5' %}" class="nav-link text-dark sjustify-content-end"  title="camping por parques naturales">
+      <div class="sb-nav-link-icon ms-4 p-2 rounded bg-success"><i class="bi bi-eye-fill me-3"></i></div>
+    </a>
+    <!-- Agrega aquí más enlaces a otros gráficos si los tienes -->
+  </div>
+</div> {% endcomment %}
+                         <!-- Acordeón: Huéspedes -->
+                       <a class="nav-link collapsed text-dark" href="#" data-bs-toggle="collapse" data-bs-target="#huespedesCollapse" aria-expanded="false">
+                        <div class="sb-nav-link-icon d-flex"><i class="bi bi-people me-2"></i>
+                          <h6>Huéspedes</h6></div>
+                        
+                        <div class="sb-sidenav-collapse-arrow text-dark"><i class="fas fa-angle-down"></i></div>
+                      </a>
+                      <div class="collapse" id="huespedesCollapse">
+                        <div class="nav text-dark">
+                          <!-- CRUD Huéspedes -->
+                          <a href="{% url 'guest_list' %}" class="nav-link text-dark sjustify-content-end">
+                            <div class="sb-nav-link-icon ms-4 p-2 rounded bg-success"><i class="bi bi-eye-fill me-3"></i><i class="bi bi-file-earmark-plus me-3"></i><i class="bi bi-pencil-fill me-3"></i><i class="bi bi-trash-fill"></i></div>
+                          </a>
+                        </div>
+                      </div>
+
+                        </div>
+                      </div>
+                      {% comment %}  <div class="sb-sidenav-menu">
+                        <div class="nav">
+                            
+                            <a class="nav-link" href="{% url 'inicio_admin' %}">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                
+                            </a>
+                            
+                            <div class="sb-sidenav-menu-heading">Clientes</div>
+                            <a href="{% url 'listar_clientes' %}" class="nav-link">
+                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                Clientes
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i>
+                                </div>
+                            </a>
+                        </div>
+                    </div> {% endcomment %}
+                </nav>
+            </div>
+            <div id="layoutSidenav_content">
+                <main>
+                  {% block content %}
+
+<div class="container">
+  <div class="center_col m-2 text-center bg-success rounded text-white">
+  <h2>Bienvenido Usuario Administrador: {{ user.first_name }}</h2>
+  </div>
+  <div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-12">
+            <div class="border rounded p-4">
+
+                <h2 class="display-4 text-center mb-5">Resumen de Datos</h2>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card text-center">
+                            <div class="card-body">
+                                <h3 class="card-title display-3">{{ num_naturalparks }}</h3>
+                                <p class="card-text">Parques Naturales</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card text-center">
+                            <div class="card-body">
+                                <h3 class="card-title display-3">{{ num_clients }}</h3>
+                                <p class="card-text">Clientes</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card text-center">
+                            <div class="card-body">
+                                <h3 class="card-title text-success display-3">{{ num_reservations }}</h3>
+                                <p class="card-text">Reservas</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+              <div class="container mt-4">
+                  <div class="row justify-content-center">
+                      <div class="col-lg-12">
+                          <div class="border rounded p-4 text-center">
+                              <h4 class="p-2 m-2 display-6">Ocupación de los campings</h4>
+                              <div class="row justify-content-center">
+                                <div class="col-lg-4">
+                              <form method="GET" action="{% url 'inicio_admin' %}" class="justify-content-center text-center">
+                                  <div class="form-group justify-content-center">
+                                      <label for="mes">Seleccionar Mes:</label>
+                                      <select name="mes" id="mes" class="form-control text-center">
+                                          <option value="1" {% if mes and mes|add:0 == 1 %}selected{% endif %}>Enero</option>
+                                          <option value="2" {% if mes and mes|add:0 == 2 %}selected{% endif %}>Febrero</option>
+                                          <option value="3" {% if mes and mes|add:0 == 3 %}selected{% endif %}>Marzo</option>
+                                          <option value="4" {% if mes and mes|add:0 == 4 %}selected{% endif %}>Abril</option>
+                                          <option value="5" {% if mes and mes|add:0 == 5 %}selected{% endif %}>Mayo</option>
+                                          <option value="6" {% if mes and mes|add:0 == 6 %}selected{% endif %}>Junio</option>
+                                          <option value="7" {% if mes and mes|add:0 == 7 %}selected{% endif %}>Julio</option>
+                                          <option value="8" {% if mes and mes|add:0 == 8 %}selected{% endif %}>Agosto</option>
+                                          <option value="9" {% if mes and mes|add:0 == 9 %}selected{% endif %}>Septiembre</option>
+                                          <option value="10"{% if mes and mes|add:0 == 10 %}selected{% endif %}>Octubre</option>
+                                          <option value="11" {% if mes and mes|add:0 == 11 %}selected{% endif %}>Noviembre</option>
+                                          <option value="12" {% if mes and mes|add:0 == 12 %}selected{% endif %}>Diciembre</option>
+                                      </select>
+                                      <button type="submit" class="btn btn-sm btn-success m-1">Obtener Datos</button>
+                                  </div>
+                              </form>
+                            </div>
+                          </div>
+                          <div class="row justify-content-center m-4">
+                            <div class="col-lg-4 d-flex">
+                              {% if mes and total_guests_month %}
+                                  <h5 class="opacity-75 p-4 bg-warning rounded" style="width: 80rem;">Huéspedes Totales del mes: {{ total_guests_month }} </h5>
+                              {% endif %}
+                            </div>
+                          </div>
+                            
+                          </div>
+                      </div>
+                  </div>
+              </div>               
+
+                <h2 class="display-6 mt-5 text-center">Reservas del Día</h2>
+                <div class="table-responsive rounded mt-4" style="overflow-x: auto;">
+                    <table class="table table-bordered table-warning rounded text-center">
+                        <thead>
+                            <tr>
+                                <th>Código de reserva</th>
+                                <th>Cliente</th>
+                                <th>Camping</th>
+                                <th>Precio de la reserva</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          {% for reservation in reservations_today %}
+                          <tr>
+                              <td><a href="{% url 'reserva_info' reservation.id %}">{{ reservation.code }}</a></td>
+                              <td>{{ reservation.user.first_name }} {{ reservation.user.last_name }}</td>
+                              <td>{{ reservation.campsite }}</td>
+                              <td>${{ reservation.total_cost|floatformat:2 }}</td>
+                          </tr>
+                          {% empty %}
+                          <tr>
+                              <td colspan="4">No hay reservas para el día de hoy.</td>
+                          </tr>
+                          {% endfor %}
+                        </tbody>
+                    </table>
+                    {% if total_cost_today %}
+                    <div class="text-center bg-warning rounded p-1 justify-content-center" style="opacity: 0.75;">
+                    <h4>Total Reservas del día = ${{ total_cost_today }}</h4>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+</div>
+</div>
+
+                  {% endblock %}
+                </main>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="/static/administracion/js/scripts.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+        <script src="/static/administracion/assets/demo/chart-area-demo.js"></script>
+        <script src="/static/administracion/assets/demo/chart-bar-demo.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+        <script src="/static/administracion/js/datatables-simple-demo.js"></script>
+    </body>
+</html>

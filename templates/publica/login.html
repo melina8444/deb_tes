@@ -1,0 +1,33 @@
+{%extends '../publica/index.html'%}
+{% load static %}
+
+{% block title %}
+Login - {{ block.super }}
+{% endblock title%}
+
+
+{% block page_title %}
+LOGIN - Inicio de Sesión
+{% endblock %}
+{% block video %}
+{% endblock %}
+
+    {% block content %}
+    <div class="container m-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+              <div class="border rounded p-4">
+      <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success">Login</button>
+      </form>
+    </div>
+</div>
+</div>
+</div>
+
+    
+      {% endblock %}
+</body>
+</html>

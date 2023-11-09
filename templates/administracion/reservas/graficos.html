@@ -1,0 +1,37 @@
+{% extends '../index_master.html' %}
+
+{% block content %}
+  <div class="container" style="width: 900px; height: 370px;">  
+    <canvas id="reservasPorMes" width="900" height="370"></canvas>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    var ctx = document.getElementById('reservasPorMes').getContext('2d');
+    
+    var labels = {{ labels|safe }};
+    var data = {{ data|safe }};
+    
+    var chart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: 'Cantidad de Reservas por Mes y Año',
+          data: data,
+          backgroundColor: 'rgba(75, 192, 192, 0.5)',
+          borderColor: 'rgba(75, 192, 192, 1)',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            stepSize: 1
+          }
+        }
+      }
+    });
+  </script>
+{% endblock %}
