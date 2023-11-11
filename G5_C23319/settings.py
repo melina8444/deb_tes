@@ -28,7 +28,7 @@ environ.Env.read_env()
 SECRET_KEY=env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -88,7 +88,7 @@ WSGI_APPLICATION = 'G5_C23319.wsgi.application'
 #    }
 #}
 
-""" DATABASES = {
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': env('DB_NAME'),
@@ -98,8 +98,8 @@ WSGI_APPLICATION = 'G5_C23319.wsgi.application'
         'PORT': env('DB_PORT'),
     }
 } 
-   """
-DATABASES = {
+  
+""" DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': env('DB_NAME'),
@@ -108,7 +108,7 @@ DATABASES = {
         'HOST': env('DB_HOST'),
         'PORT': env('DB_PORT'),
     }
-} 
+}  """
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
