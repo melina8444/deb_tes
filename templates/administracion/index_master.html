@@ -73,62 +73,62 @@
                     </div>
                 </div>
                       
-                          <!-- Acordeón: Parques Naturales -->
-                            <a class="nav-link collapsed text-dark" href="#" data-bs-toggle="collapse" data-bs-target="#parquesCollapse" aria-expanded="false">
-                                  <div class="sb-nav-link-icon d-flex"><i class="bi bi-flower2 me-2"></i><h6>Parques Naturales</h6></div>
-                                  <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
+                                            <!-- Acordeón: Parques Naturales -->
+                  <a class="nav-link collapsed text-dark" href="#" data-bs-toggle="collapse" data-bs-target="#parquesCollapse" aria-expanded="false">
+                    <div class="sb-nav-link-icon d-flex"><i class="bi bi-flower2 me-2"></i><h6>Parques Naturales</h6></div>
+                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                  </a>
                   <div class="collapse" id="parquesCollapse">
-                      <div class="nav">
-                              <!-- CRUD Parques Naturales -->
-                            <a href="{% url 'naturalpark_list' %}" class="nav-link text-dark sjustify-content-end">
-                                  <div class="sb-nav-link-icon ms-4 p-2 rounded bg-success"><i class="bi bi-eye-fill me-3"></i><i class="bi bi-file-earmark-plus me-3"></i><i class="bi bi-pencil-fill me-3"></i><i class="bi bi-trash-fill"></i></div>
-                            </a>   
-                      </div>
-                  </div>
-                  <div>
-                              <!-- Acordeón: Temporada -->
-                      <a class="nav-link collapsed text-dark" href="#" data-bs-toggle="collapse" data-bs-target="#campingsCollapse" aria-expanded="false">
-                        <div class="sb-nav-link-icon d-flex"><i class="bi bi-triangle me-2"></i><h6>Temporada</h6></div>
-                        <div class="sb-sidenav-collapse-arrow text-dark"><i class="fas fa-angle-down"></i></div>
-                      </a>
-                      <div class="collapse" id="campingsCollapse">
-                        <div class="nav text-dark">
-                          <!-- CRUD Temporada -->
-                          <a href="{% url 'season_list' %}" class="nav-link text-dark sjustify-content-end">
+                    <div class="nav">
+                        <!-- CRUD Parques Naturales -->
+                        <a href="{% url 'naturalpark_list' %}" class="nav-link text-dark sjustify-content-end">
                             <div class="sb-nav-link-icon ms-4 p-2 rounded bg-success"><i class="bi bi-eye-fill me-3"></i><i class="bi bi-file-earmark-plus me-3"></i><i class="bi bi-pencil-fill me-3"></i><i class="bi bi-trash-fill"></i></div>
-                          </a>
-                        </div>
-                      </div>
+                        </a>
                     </div>
+                  </div>
 
-                           <!-- Acordeón: Categorias -->
-                      <a class="nav-link collapsed text-dark" href="#" data-bs-toggle="collapse" data-bs-target="#categoriesCollapse" aria-expanded="false">
-                        <div class="sb-nav-link-icon d-flex"><i class="bi bi-folder me-2"></i><h6>Categorías</h6></div>
-                        <div class="sb-sidenav-collapse-arrow text-dark"><i class="fas fa-angle-down"></i></div>
-                      </a>
-                      <div class="collapse" id="categoriesCollapse">
-                        <div class="nav text-dark">
-                          <!-- CRUD Categorias -->
-                          <a href="{% url 'category_list' %}" class="nav-link text-dark sjustify-content-end">
+                  <!-- Acordeón: Temporada -->
+                  <a class="nav-link collapsed text-dark" href="#" data-bs-toggle="collapse" data-bs-target="#temporadaCollapse" aria-expanded="false">
+                    <div class="sb-nav-link-icon d-flex"><i class="bi bi-triangle me-2"></i><h6>Temporada</h6></div>
+                    <div class="sb-sidenav-collapse-arrow text-dark"><i class="fas fa-angle-down"></i></div>
+                  </a>
+                  <div class="collapse" id="temporadaCollapse">
+                    <div class="nav text-dark">
+                        <!-- CRUD Temporada -->
+                        <a href="{% url 'season_list' %}" class="nav-link text-dark sjustify-content-end">
                             <div class="sb-nav-link-icon ms-4 p-2 rounded bg-success"><i class="bi bi-eye-fill me-3"></i><i class="bi bi-file-earmark-plus me-3"></i><i class="bi bi-pencil-fill me-3"></i><i class="bi bi-trash-fill"></i></div>
-                          </a>
-                        </div>
-                      </div>
-                      
-                      <!-- Acordeón: Campings -->
-                      <a class="nav-link collapsed text-dark" href="#" data-bs-toggle="collapse" data-bs-target="#campingsCollapse" aria-expanded="false">
-                        <div class="sb-nav-link-icon d-flex"><i class="bi bi-triangle me-2"></i><h6>Campings</h6></div>
-                        <div class="sb-sidenav-collapse-arrow text-dark"><i class="fas fa-angle-down"></i></div>
-                      </a>
-                      <div class="collapse" id="campingsCollapse">
-                        <div class="nav text-dark">
-                          <!-- CRUD Campings -->
-                          <a href="{% url 'campsite_list' %}" class="nav-link text-dark sjustify-content-end">
+                        </a>
+                    </div>
+                  </div>
+
+                  <!-- Acordeón: Categorías -->
+                  <a class="nav-link collapsed text-dark" href="#" data-bs-toggle="collapse" data-bs-target="#categoriasCollapse" aria-expanded="false">
+                    <div class="sb-nav-link-icon d-flex"><i class="bi bi-folder me-2"></i><h6>Categorías</h6></div>
+                    <div class="sb-sidenav-collapse-arrow text-dark"><i class="fas fa-angle-down"></i></div>
+                  </a>
+                  <div class="collapse" id="categoriasCollapse">
+                    <div class="nav text-dark">
+                        <!-- CRUD Categorías -->
+                        <a href="{% url 'category_list' %}" class="nav-link text-dark sjustify-content-end">
                             <div class="sb-nav-link-icon ms-4 p-2 rounded bg-success"><i class="bi bi-eye-fill me-3"></i><i class="bi bi-file-earmark-plus me-3"></i><i class="bi bi-pencil-fill me-3"></i><i class="bi bi-trash-fill"></i></div>
-                          </a>
-                        </div>
-                      </div>
+                        </a>
+                    </div>
+                  </div>
+
+                  <!-- Acordeón: Campings -->
+                  <a class="nav-link collapsed text-dark" href="#" data-bs-toggle="collapse" data-bs-target="#campingsCollapse" aria-expanded="false">
+                    <div class="sb-nav-link-icon d-flex"><i class="bi bi-triangle me-2"></i><h6>Campings</h6></div>
+                    <div class="sb-sidenav-collapse-arrow text-dark"><i class="fas fa-angle-down"></i></div>
+                  </a>
+                  <div class="collapse" id="campingsCollapse">
+                    <div class="nav text-dark">
+                        <!-- CRUD Campings -->
+                        <a href="{% url 'campsite_list' %}" class="nav-link text-dark sjustify-content-end">
+                            <div class="sb-nav-link-icon ms-4 p-2 rounded bg-success"><i class="bi bi-eye-fill me-3"></i><i class="bi bi-file-earmark-plus me-3"></i><i class="bi bi-pencil-fill me-3"></i><i class="bi bi-trash-fill"></i></div>
+                        </a>
+                    </div>
+                  </div>
+
 
                         <!-- Acordeón: Disponibilidades -->
                         <a class="nav-link collapsed text-dark" href="#" data-bs-toggle="collapse" data-bs-target="#availabilityCollapse" aria-expanded="false">
