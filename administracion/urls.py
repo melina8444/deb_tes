@@ -1,6 +1,8 @@
 from django.urls import path
 from . import views
 from .views import NaturalParkListView, NaturalParkCreateView,NaturalParkUpdateView, NaturalParkDeleteView, CategoryListView, CategoryCreateView, CategoryUpdateView, CategoryDeleteView, CampsiteListView, CampsiteCreateView, CampsiteUpdateView, CampsiteDeleteView, AvailabilityListView, AvailabilityCreateView, AvailabilityUpdateView, AvailabilityDeleteView, ProfileListView, ProfileCreateView, ProfileUpdateView, ProfileDeleteView, ReservationListView, ReservationCreateView, ReservationDeleteView, ReservationUpdateView, GuestListView, GuestDeleteView, GuestUpdateView, SeasonListView, SeasonCreateView, SeasonUpdateView, SeasonDeleteView
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('', views.index_admin, name='inicio_admin'),
@@ -56,6 +58,11 @@ urlpatterns = [
     path('season/create/', SeasonCreateView.as_view(), name='season_create'),
     path('season/update/<int:pk>/', SeasonUpdateView.as_view(), name='season_update'),
     path('season/delete/<int:pk>/', SeasonDeleteView.as_view(), name='season_delete'),
-    
+
+   
 
 ]
+ #MANUAL DE USUARIO
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    

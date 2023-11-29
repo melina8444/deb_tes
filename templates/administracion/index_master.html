@@ -160,9 +160,25 @@
                           <a href="{% url 'reservation_list' %}" class="nav-link text-dark sjustify-content-end">
                             <div class="sb-nav-link-icon ms-4 p-2 rounded bg-success"><i class="bi bi-eye-fill me-3"></i><i class="bi bi-file-earmark-plus me-3"></i><i class="bi bi-pencil-fill me-3"></i><i class="bi bi-trash-fill"></i></div>
                           </a>
+                          
                         </div>
                       </div>
-                       
+
+<!-- Acordeón: Documentos -->
+<a class="nav-link collapsed text-dark" href="#" data-bs-toggle="collapse" data-bs-target="#documentosCollapse" aria-expanded="false">
+  <div class="sb-nav-link-icon d-flex"><i class="bi bi-file-text me-2"></i><h6>Documentos</h6></div>
+  <div class="sb-sidenav-collapse-arrow text-dark"><i class="fas fa-angle-down"></i></div>
+</a>
+<div class="collapse" id="documentosCollapse">
+  <div class="nav text-dark">
+      <!-- Enlace al PDF -->
+      <a href="{% static 'administracion/pdfs/Manual_Usuario_tesis1.pdf' %}" target="_blank" class="nav-link text-dark sjustify-content-end">
+          <div class="sb-nav-link-icon ms-4 p-2 rounded bg-success"><i class="bi bi-file-earmark-pdf-fill me-3"></i></div>
+          Ver Manual de Usuario
+      </a>
+  </div>
+</div>
+                    
 <!-- Acordeón: Gráficos -->
 <a class="nav-link collapsed text-dark" href="#" data-bs-toggle="collapse" data-bs-target="#graficosCollapse" aria-expanded="false">
   <div class="sb-nav-link-icon d-flex"><i class="bi bi-bar-chart me-2"></i><h6>Gráficos</h6></div>

@@ -73,6 +73,8 @@ class UsuarioAdmin(UserAdmin):
         ProfileAdminInline,
     ]
 
+
+
 rn_admin = RNAdminSite(name='rnadmin')
 rn_admin.register(NaturalPark, NaturalParkAdmin)
 rn_admin.register(Category, CategoryAdmin)

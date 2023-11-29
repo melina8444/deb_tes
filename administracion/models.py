@@ -97,15 +97,6 @@ class Availability(models.Model):
         return f'Fecha inicio: {self.start_date}  Fecha fin: {self.end_date} Capacidad Máxima: {self.max_capacity}'
 
 
-""" 
-class Season(models.Model):
-    name = models.CharField(max_length=100)
-    start_date = models.DateField()
-    end_date = models.DateField()
-    percentage = models.DecimalField(max_digits=5, decimal_places=2, null=True)  # Campo para el porcentaje
-
-    def _str_(self):
-        return self.name """
 
 
 class Season(models.Model):
@@ -167,18 +158,6 @@ class Reservation(models.Model):
     
 
 
-""" 
-    def monthly_occupancy(self):
-        availabilities = Availability.objects.filter(reservation=self)
-        occupancy_data = (
-            availabilities
-            .annotate(month=TruncMonth('start_date'))
-            .values('month')
-            .annotate(total_occupancy=Sum('max_capacity'))
-            .order_by('month')
-        )
-        return occupancy_data """
-
 
 class Guest(models.Model):
     class Meta:
@@ -204,3 +183,5 @@ class Profile(models.Model):
     address = models.CharField(max_length=255)
     dni = models.CharField(max_length=255)
     is_client = models.BooleanField(default=True)
+
+

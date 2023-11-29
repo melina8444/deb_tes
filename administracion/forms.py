@@ -6,6 +6,7 @@ from .models import NaturalPark, Category, Campsite, Availability, Reservation, 
 from django.db.models import Sum
 from django.core.exceptions import ValidationError
 
+
 Province = NaturalPark.Province
 
 class NaturalParkFilterForm(forms.Form):
@@ -188,7 +189,7 @@ class ReservationForm(forms.ModelForm):
             if check_out <= check_in:
                 self.add_error(None, forms.ValidationError(f"La fecha de check-out debe ser posterior a la fecha de check-in."))
         
-        if number_guests <= 0:
+        if number_guests is not None and number_guests <= 0:
             self.add_error(None, forms.ValidationError(f"Se debe ingresar un número de huéspedes"))
 
         return cleaned_data
@@ -314,3 +315,4 @@ class GuestFilterForm(forms.Form):
             if not Guest.objects.filter(reservation__code=reservation_code).exists():
                 raise forms.ValidationError("No se encontraron huéspedes para esa reserva.")
         return reservation_code
+    

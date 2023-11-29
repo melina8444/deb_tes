@@ -16,6 +16,7 @@ from django.utils.html import strip_tags
 from decimal import Decimal
 
 
+
 def index(request):
     naturalparks = NaturalPark.objects.all()
     is_staff = request.user.is_staff
@@ -295,6 +296,9 @@ class ReservationCreateView(LoginRequiredMixin, CreateView):
                     total_cost *= season.percentage / 100
                 
                 form.instance.total_cost = total_cost
+
+            else:
+                 messages.error(self.request, "Por favor, completa los datos correctamente.")
 
         availability = Availability.objects.get(campsite=form.cleaned_data['campsite'])
         form.instance.availability = availability
