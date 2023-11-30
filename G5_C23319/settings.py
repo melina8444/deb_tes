@@ -87,7 +87,6 @@ WSGI_APPLICATION = 'G5_C23319.wsgi.application'
 #        'NAME': BASE_DIR / 'db.sqlite3',
 #    }
 #}
-
 """ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -97,8 +96,8 @@ WSGI_APPLICATION = 'G5_C23319.wsgi.application'
         'HOST': env('DB_HOST'),
         'PORT': env('DB_PORT'),
     }
-} 
-   """
+}  """
+   
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
